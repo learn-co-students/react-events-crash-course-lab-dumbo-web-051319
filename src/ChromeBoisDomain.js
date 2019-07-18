@@ -9,18 +9,29 @@ export default class ChromeBoisDomain extends Component {
   handleMouseMove = (event) => {
     drawChromeBoiAtCoords(event.clientX, event.clientY)
   }
+
+  handleKeyPress = (event) => {
+    if(event.key === 'a'){
+    console.log('Clicked A!')
+       resize("+")
+    } else if(event.key === 's'){
+      console.log('Clicked S!')
+      resize('-')
+    }
+  }
     //NOTE: In /test/ChromeBoisDomainTest.js, lines 30 and 31 show what X and Y should be called -_-
-    
     /* TODO: This method should capture the `x` and `y` coordinates of the mouse
      * from the event and use them to invoke the `drawChromeBoiAtCoords`
      * function that has been provided and is already imported
      * (`drawChromeBoiAtCoords` expects two arguments, an x and a y coordinate)
      */
 
+
   /* TODO: Create an event handler which, when fired, invokes the provided
    * `toggleCycling` function with no arguments. Don't forget the click event
    * listener that should fire it!
    */
+
 
   /* TODO: Add an event listener to the `<canvas>` element to capture when a key
   /* is pressed. When a key is pressed, an event handler should invoke the the
@@ -33,6 +44,8 @@ export default class ChromeBoisDomain extends Component {
     return (
       <canvas
         onMouseMove={this.handleMouseMove}
+        onClick={() => {toggleCycling()}}
+        onKeyPress={this.handleKeyPress}
         width='900'
         height='600'
         tabIndex="0">
